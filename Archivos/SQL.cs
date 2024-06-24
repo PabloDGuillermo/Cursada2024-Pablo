@@ -27,9 +27,10 @@ namespace bdc_Ejemplos
             return command;
         }
 
-        static T RealizarConsulta()
+        static string RealizarConsulta()
         {
-            T datos;
+            string datos = "";
+            int i = 0;
             try
             {
                 command.CommandText = "SELECT * FROM tabla";
@@ -38,7 +39,8 @@ namespace bdc_Ejemplos
 
                 while (reader.Read())
                 {
-                    //Logica
+                    datos += reader.GetString(i);
+                    i++;
                 }
             }
             catch (Exception)
@@ -52,7 +54,7 @@ namespace bdc_Ejemplos
                     connection.Close();
                 }
             }
-            //return datos;
+            return datos;
         }
 
         static void EscribirDatos()
