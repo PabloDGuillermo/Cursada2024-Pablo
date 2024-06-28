@@ -11,11 +11,16 @@ namespace CentralitaVII_Entidades
         protected float duracion;
         protected string nroDestino;
         protected string nroOrigen;
+        protected float costoLlamada;
 
         public float Duracion {
             get
             {
                 return duracion;
+            }
+            set
+            {
+                duracion = value;
             }
         }
         public string NroDestino {
@@ -23,26 +28,31 @@ namespace CentralitaVII_Entidades
             {
                 return nroDestino;
             }
+            set
+            {
+                nroDestino = value;
+            }
         }
         public string NroOrigen {
-            get {
+            get
+            {
                 return nroOrigen;
-            } 
+            }
+            set
+            {
+                nroOrigen = value;
+            }
         }
-        public abstract float CostoLlamada
-        {
-            get;
-        }
-        public Llamada()
-        {
 
-        }
+        public Llamada() { }
         public Llamada(float duracion, string nroDestino, string nroOrigen)
         {
             this.duracion = duracion;
             this.nroDestino = nroDestino;
             this.nroOrigen = nroOrigen;
         }
+
+        public abstract float CostoLlamada { get; set; }
 
         protected virtual string Mostrar()
         {

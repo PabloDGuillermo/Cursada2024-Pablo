@@ -9,17 +9,11 @@ namespace CentralitaVII_Entidades
 {
     public class Provincial : Llamada, IGuardar<Provincial>
     {
-        protected Franja franjaHoraria;
+        private Franja franjaHoraria;
         private string rutaDeArchivo = "LlamadasProvinciales.xml";
-        public override float CostoLlamada
-        {
-            get
-            {
-                return this.CalcularCosto();
-            }
-        }
-        public string RutaDeArchivo { get => rutaDeArchivo; set => rutaDeArchivo = value; }
-        private Provincial() {}
+
+        public Provincial() { }
+
         public Provincial(Franja miFranja, Llamada llamada):base(llamada.Duracion, llamada.NroDestino, llamada.NroOrigen)
         {
             this.franjaHoraria = miFranja;
@@ -28,6 +22,10 @@ namespace CentralitaVII_Entidades
         {
             this.franjaHoraria = miFranja;
         }
+
+        public override float CostoLlamada { get => this.CalcularCosto(); set => costoLlamada = value; }
+        public string RutaDeArchivo { get => rutaDeArchivo; set => rutaDeArchivo = value; }
+        public Franja FranjaHoraria { get => franjaHoraria; set => franjaHoraria = value; }
 
         private float CalcularCosto()
         {
@@ -70,7 +68,8 @@ namespace CentralitaVII_Entidades
             {
                 if (!File.Exists(this.RutaDeArchivo))
                 {
-                    File.Create(this.RutaDeArchivo);
+                    FileStream fs = File.Create(this.RutaDeArchivo);
+                    fs.Close();
                 }
                 using (StreamWriter sw = new StreamWriter(this.RutaDeArchivo))
                 {
@@ -94,7 +93,7 @@ namespace CentralitaVII_Entidades
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Provincial));
                     provicial = xmlSerializer.Deserialize(sr) as Provincial;
-                    if (provicial is Local)
+                    if (provicial is Provincial)
                     {
                         return provicial;
                     }

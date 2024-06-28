@@ -9,16 +9,11 @@ namespace CentralitaVII_Entidades
 {
     public class Local:Llamada, IGuardar<Local>
     {
-        protected float costo;
+        private float costo;
         private string rutaDeArchivo = "LlamadasLocales.xml";
 
-        public override float CostoLlamada { get
-            { 
-                return this.CalcularCosto();
-            }
-        }
-        private Local(){}
 
+        public Local() : base() { }
         public Local (Llamada llamada, float costo):base(llamada.Duracion, llamada.NroDestino, llamada.NroOrigen)
         {
             this.costo = costo;
@@ -27,11 +22,15 @@ namespace CentralitaVII_Entidades
         {
             this.costo = costo;
         }
+
+        public override float CostoLlamada {get=> this.CalcularCosto(); set=>costoLlamada = value;}
+        public float Costo { get => costo; set => costo = value; }
         public string RutaDeArchivo { get=>rutaDeArchivo; set=>rutaDeArchivo=value; }
+
 
         private float CalcularCosto()
         {
-            return this.Duracion * this.costo;
+            return this.Duracion * this.Costo;
         }
 
         protected override string Mostrar()
@@ -39,7 +38,6 @@ namespace CentralitaVII_Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append(base.Mostrar());
             sb.AppendLine($"Costo de la llamada: {this.CostoLlamada}");
-
             return sb.ToString();
         }
 
@@ -56,12 +54,16 @@ namespace CentralitaVII_Entidades
         {
             try
             {
-                //if (!File.Exists(this.RutaDeArchivo))
-                //{
-                //    File.Create(this.RutaDeArchivo);
-                //}
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Local));
-                xmlSerializer.Serialize(File.AppendText(this.RutaDeArchivo),this);
+                if (!File.Exists(this.RutaDeArchivo))
+                {
+                    FileStream fs = File.Create(this.RutaDeArchivo);
+                    fs.Close();
+                }
+                using (StreamWriter sw = new StreamWriter(this.RutaDeArchivo))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Local));
+                    xmlSerializer.Serialize(sw, this);
+                } 
                 return true;
 
             }

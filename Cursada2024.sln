@@ -141,19 +141,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaV_Entidades", "Ce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaV_Forms", "CentralitaV_Forms\CentralitaV_Forms.csproj", "{C54C70AA-1837-492C-8BA5-104C30AD4EDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVI_Entidades", "CentralitaVI_Entidades\CentralitaVI_Entidades.csproj", "{86A4E7F3-AC7C-47CE-9864-091CAB2497A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVI_Entidades", "CentralitaVI_Entidades\CentralitaVI_Entidades.csproj", "{86A4E7F3-AC7C-47CE-9864-091CAB2497A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVI_Forms", "CentralitaVI_Forms\CentralitaVI_Forms.csproj", "{4D5DEDBA-4E68-45F3-ACCF-07EB108C0861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVI_Forms", "CentralitaVI_Forms\CentralitaVI_Forms.csproj", "{4D5DEDBA-4E68-45F3-ACCF-07EB108C0861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVI_Consola", "CentralitaVI_Consola\CentralitaVI_Consola.csproj", "{DDE13A48-BBFB-4A71-A2CB-DC3096511FA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVI_Consola", "CentralitaVI_Consola\CentralitaVI_Consola.csproj", "{DDE13A48-BBFB-4A71-A2CB-DC3096511FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVII_Entidades", "CentralitaVII_Entidades\CentralitaVII_Entidades.csproj", "{C4E0A844-0681-4FF2-81C7-5A07C47F92FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVII_Entidades", "CentralitaVII_Entidades\CentralitaVII_Entidades.csproj", "{C4E0A844-0681-4FF2-81C7-5A07C47F92FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVII_Forms", "CentralitaVII_Forms\CentralitaVII_Forms.csproj", "{D5872DDD-0E17-46A4-AD38-2B668C779B14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVII_Forms", "CentralitaVII_Forms\CentralitaVII_Forms.csproj", "{D5872DDD-0E17-46A4-AD38-2B668C779B14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Centralita", "Centralita", "{B1BDF45A-DB63-41BF-A31F-9F7F792D8DEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralitaVII_Consola", "CentralitaVII_Consola\CentralitaVII_Consola.csproj", "{214C49F4-3941-4B37-89AD-C2024E8DB0FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralitaVII_Consola", "CentralitaVII_Consola\CentralitaVII_Consola.csproj", "{214C49F4-3941-4B37-89AD-C2024E8DB0FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16.Conexion a Base de Datos", "16.Conexion a Base de Datos", "{25924455-4792-4ACD-A79F-ACBD22DBADB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_Forms", "CRUD_Forms\CRUD_Forms.csproj", "{F3A775E4-9CE6-4781-8212-5D7922F8A946}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_Entidades", "CRUD_Entidades\CRUD_Entidades.csproj", "{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -369,6 +375,14 @@ Global
 		{214C49F4-3941-4B37-89AD-C2024E8DB0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214C49F4-3941-4B37-89AD-C2024E8DB0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214C49F4-3941-4B37-89AD-C2024E8DB0FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A775E4-9CE6-4781-8212-5D7922F8A946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A775E4-9CE6-4781-8212-5D7922F8A946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A775E4-9CE6-4781-8212-5D7922F8A946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A775E4-9CE6-4781-8212-5D7922F8A946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -435,6 +449,8 @@ Global
 		{D5872DDD-0E17-46A4-AD38-2B668C779B14} = {B1BDF45A-DB63-41BF-A31F-9F7F792D8DEE}
 		{B1BDF45A-DB63-41BF-A31F-9F7F792D8DEE} = {5289F00A-EB8F-4DFC-8877-DDBCA5FF0897}
 		{214C49F4-3941-4B37-89AD-C2024E8DB0FA} = {B1BDF45A-DB63-41BF-A31F-9F7F792D8DEE}
+		{F3A775E4-9CE6-4781-8212-5D7922F8A946} = {25924455-4792-4ACD-A79F-ACBD22DBADB9}
+		{C5F2C9DB-79EB-402A-B423-EAD58C4ABE87} = {25924455-4792-4ACD-A79F-ACBD22DBADB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74F6C53F-2C0F-431D-8F99-5D757E64541E}
