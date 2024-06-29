@@ -31,7 +31,7 @@ namespace Consola
 
             Console.WriteLine($"{NewLine}2da Comparación - Texto con más palabras:");
             // Punto 3
-            Comparar(primerTexto,segundoTexto,(pt,st) => pt.)
+            //Comparar(primerTexto,segundoTexto,(pt,st) => pt.)
 
             Console.WriteLine($"{NewLine}3era Comparación - Texto con más vocales:");
             // Punto 4

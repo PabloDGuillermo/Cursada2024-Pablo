@@ -18,8 +18,6 @@ namespace I02
             }
 
             Console.WriteLine($"Ingresó el {numero}. Su cuadrado es {Math.Pow(numero, 2)} y su cubo es {Math.Pow(numero, 3)}");
-
-            I01.Program.hola();
         }
     }
 }

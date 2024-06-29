@@ -54,6 +54,15 @@ namespace Entidades
             } 
         }
 
+        void IArchivo<string>.Guardar(string info)
+        {
+            throw new NotImplementedException();
+        }
+
+        string IArchivo<string>.Leer()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
