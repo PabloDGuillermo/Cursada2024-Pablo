@@ -7,16 +7,24 @@ using System.Xml.Serialization;
 
 namespace Entidades
 {
-    public class Bombero : IArchivo<string>
+    public delegate void FinDeSalida(int bomberoIndex);
+    public class Bombero : IArchivo<string>, IArchivo<Bombero>
     {
         private string nombre;
         private List<Salida> salidas;
-
-        public Bombero(string nombre)
+        public event FinDeSalida MarcarFin;
+        
+        public Bombero()
+        {
+            salidas = new List<Salida>();
+        }
+        public Bombero(string nombre):this()
         {
             this.nombre = nombre;
-            this.salidas = new List<Salida>();
         }
+
+        public string Nombre { get => nombre; set => nombre = value; }
+        public List<Salida> Salidas { get => salidas; set => salidas = value; }
 
         public void Guardar(Bombero info)
         {
@@ -64,5 +72,6 @@ namespace Entidades
             throw new NotImplementedException();
         }
 
+        
     }
 }
