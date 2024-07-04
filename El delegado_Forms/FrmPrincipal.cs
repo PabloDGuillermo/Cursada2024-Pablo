@@ -23,8 +23,8 @@ namespace El_delegado_Forms
         {
             frmMostrar = new FrmMostrar();
             frmMostrar.MdiParent = this;
-            frmTestDelegados = new FrmTestDelegados();
-            frmTestDelegados.dele frmMostrar.ActualizarNombre;
+            //frmTestDelegados = new FrmTestDelegados();
+            //frmTestDelegados.dele frmMostrar.ActualizarNombre;
             frmTestDelegados.MdiParent = this;
             mnuMostrar.Enabled = false;
         }
