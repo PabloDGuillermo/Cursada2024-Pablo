@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\I03_DefinitivamenteEstoNoEsSteam_Entidades\I03_DefinitivamenteEstoNoEsSteam_Entidades.csproj" />
+  </ItemGroup>
+
 </Project>

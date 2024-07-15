@@ -16,6 +16,8 @@ namespace I03_DefinitivamenteEstoNoEsSteam_Entidades
         private static string GENERO = "GENERO";
         private static string NOMBRE = "NOMBRE";
         private static string PRECIO = "PRECIO";
+        private static string CODIGO_JUEGO = "CODIGO_JUEGO";
+        private static string USERNAME = "USERNAME";
 
         static JuegoDAO()
         {
@@ -28,10 +30,6 @@ namespace I03_DefinitivamenteEstoNoEsSteam_Entidades
 
         public static void Guardar(Juego juego)
         {
-        //    private int codigoUsuario;
-        //private string genero;
-        //private string nombre;
-        //private double precio;
             try
             {
                 conexion.Open();
@@ -50,22 +48,95 @@ namespace I03_DefinitivamenteEstoNoEsSteam_Entidades
 
         public static List<Biblioteca> Leer()
         {
-            return new List<Biblioteca>();
+            List<Biblioteca> bibliotecas = new List<Biblioteca>();
+            try
+            {
+                conexion.Open();
+                comando.CommandText = $"SELECT {NOMBRE}, {GENERO}, {CODIGO_JUEGO}, {USERNAME} FROM dbo.JUEGOS JOIN dbo.USUARIOS ON dbo.JUEGOS.{CODIGO_USUARIO} = dbo.USUARIOS.{CODIGO_USUARIO}";
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Biblioteca biblioteca = new Biblioteca(Convert.ToInt32(reader[CODIGO_JUEGO]), reader[GENERO].ToString(), reader[NOMBRE].ToString(), reader[USERNAME].ToString());
+                        bibliotecas.Add(biblioteca);
+                    }
+                }
+                return bibliotecas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer la base de datos [JuegoDAO]", ex);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public static Juego LeerPorId(int codigoJuego)
         {
-            return null;
+            try
+            {
+                conexion.Open();
+                comando.CommandText = $"SELECT * FROM dbo.JUEGOS WHERE {CODIGO_JUEGO} = {codigoJuego}";
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    reader.Read();
+                    Juego juego = new Juego(reader[NOMBRE].ToString(), Convert.ToDouble(reader[PRECIO]), reader[GENERO].ToString(), Convert.ToInt32(reader[CODIGO_JUEGO]), Convert.ToInt32(reader[CODIGO_USUARIO]));
+                    return juego;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer la base de datos [JuegoDAO]", ex);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public static void Modificar(Juego juego)
         {
-
+            try
+            {
+                conexion.Open();
+                comando.CommandText = $"UPDATE dbo.JUEGOS SET {PRECIO} = @precio, {NOMBRE} = @nombre, {GENERO} = @genero WHERE {CODIGO_JUEGO} = {juego.CodigoJuego}";
+                comando.Parameters.AddWithValue("@precio", juego.Precio);
+                comando.Parameters.AddWithValue("@nombre", juego.Nombre);
+                comando.Parameters.AddWithValue("@genero", juego.Genero);
+                if (comando.ExecuteNonQuery() <= 0)
+                {
+                    throw new Exception("No se pudo actualizar la base de datos [JuegoDAO].\nNo hubo filas afectadas.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                comando.Parameters.Clear();
+                conexion.Close();
+            }
         }
 
         public static void Eliminar(int codigoJuego)
         {
-
+            try
+            {
+                conexion.Open();
+                comando.CommandText = $"DELETE FROM dbo.JUEGOS WHERE {CODIGO_JUEGO} = {codigoJuego}";
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar el juego [JuegoDAO]", ex);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }
