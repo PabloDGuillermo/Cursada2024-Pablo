@@ -13,7 +13,6 @@ namespace _18_I02_Entidades
         private static RealNameGenerator generadorNombres;
         private List<Caja> cajas;
         private ConcurrentQueue<string> clientes;
-        private bool flag = true;
 
         static Negocio()
         {
@@ -26,22 +25,49 @@ namespace _18_I02_Entidades
             clientes = new ConcurrentQueue<string>();
         }
 
-        public void ComenzarAtencion()
+        public List<Task> ComenzarAtencion()
         {
+            List<Task> hilos = new List<Task>();
+            hilos.AddRange(AbrirCajas());
+
+
+            hilos.Add(Task.Run(GenerarClientes));
+            hilos.Add(Task.Run(AsignarCajas));
+
+            return hilos;
+        }
+
+        private List<Task> AbrirCajas()
+        {
+            List<Task> hilos = new List<Task>();
+
             foreach (Caja caja in cajas)
             {
-                caja.IniciarAtencion();
+                hilos.Add(caja.IniciarAtencion());
             }
-            while(flag == true)
+
+            return hilos;
+        }
+
+        private void AsignarCajas()
+        {
+            do
+            {
+                clientes.TryDequeue(out string cliente);
+                if (!string.IsNullOrWhiteSpace(cliente))
+                {
+                    cajas.OrderBy(c => c.CantidadDeClientesALaEspera).First().AgregarCliente(cliente);
+                }
+            } while (true);
+        }
+
+        private void GenerarClientes()
+        {
+            do
             {
                 Task task = Task.Run(() => clientes.Enqueue(generadorNombres.Generate()));
                 Thread.Sleep(1000);
-            }
-            while (flag == true)
-            {
-                Task task = Task.Run(() => clientes.Enqueue(generadorNombres.Generate()));
-                Thread.Sleep(1000);
-            }
+            } while (true);
         }
     }
 }
